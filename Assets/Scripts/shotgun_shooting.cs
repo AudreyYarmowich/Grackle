@@ -24,7 +24,7 @@ public class shotgun_shooting : MonoBehaviour, Gun
 	{
 		gunshot_source.clip = gunshot;
 		reload_source.clip = reload;
-		bullets = new List<Quaternion>(8);
+		bullets = new List<Quaternion>(bulletsPerShot);
 		for (int i = 0; i < bulletsPerShot; i++)
 		{
 			bullets.Add(Quaternion.Euler(Vector3.zero));
@@ -38,8 +38,8 @@ public class shotgun_shooting : MonoBehaviour, Gun
             bullets[i] = Random.rotation;
             GameObject p = Instantiate(bullet, transform.position, transform.rotation);
             p.transform.rotation = Quaternion.RotateTowards(p.transform.rotation, bullets[i], spreadAngle);
-            p.GetComponent<Rigidbody>().AddForce(p.transform.right * bullet_speed);
-            i++;
+            //p.GetComponent<Rigidbody>().AddForce(p.transform.right * bullet_speed);
+            //i++;
         }
 		gunshot_source.Play();
 		
